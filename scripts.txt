@@ -1,0 +1,7 @@
+$ npm install -g typescript - Install typescript global 
+
+$ tsc script.ts - compile a typescript file
+
+$ tsc --init - create a typescript configuration file
+
+$ tsc -w - keep watching for changes
