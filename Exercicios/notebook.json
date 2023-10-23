@@ -1,0 +1,17 @@
+{
+  "nome": "Notebook",
+  "preco": "2000",
+  "descricao": "Novo notebook com 128gb de memoria ram",
+  "garantia": "3",
+  "seguroAcidentes": "true",
+  "empresaFabricante": {
+    "fundacao": "1850",
+    "nome": "Ranek",
+    "pais": "Dinamarca"
+  },
+  "empresaMontadora": {
+    "fundacao": "2000",
+    "nome": "Handel",
+    "pais": "Polonia"
+  }
+}

@@ -23,3 +23,51 @@ function toNumber(value: number | string) {
     throw 'value deve ser um número ou uma string';
   }
 }
+
+console.log(toNumber(200))
+console.log(toNumber('200'))
+console.log(toNumber('Texto'))
+
+// Types e Interfaces
+
+
+async function fetchProduct(){
+  const response = await fetch('./notebook.json');
+  const data = await response.json();
+  console.log(data);
+  showProduct(data);
+}
+fetchProduct();
+
+interface Empresa {
+  fundacao:number;
+  nome: string;
+  pais:string;
+}
+
+interface Product {
+  nome: string;
+  preco: number;
+  descricao: string;
+  garantia: string;
+  seguroAcidentes: boolean;
+  empresaFabricante: Empresa;
+  empresaMontadora:Empresa;
+}
+
+function showProduct(data: Product) {
+  document.body.innerHTML = 
+  `
+    <div>
+      <h2>${data.nome}</h2>
+      <p>${data.preco}</p>
+      <div>
+        <h3>${data.empresaFabricante.nome}</h3>
+      </div>
+      <div>
+        <h3>${data.empresaMontadora.nome}</h3>
+      </div>
+    </div>
+    
+  `
+}

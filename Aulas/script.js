@@ -28,27 +28,27 @@ function somar2(a, b) {
 }
 console.log(somar2(10, 4));
 const nitendo = {
-    nome: 'Nitendo',
-    preco: '2000'
+    nome: "Nitendo",
+    preco: "2000",
 };
 function trasnformarPreco(produto) {
-    produto.preco = 'R$' + produto.preco;
+    produto.preco = "R$" + produto.preco;
     return produto;
 }
 console.log(trasnformarPreco(nitendo));
 // String, Number e Boolean
-const frase = 'Front end';
+const frase = "Front end";
 const preco2 = 500;
 const condi = preco > 100;
 console.log(typeof frase);
 console.log(typeof preco2);
 console.log(typeof condi);
-if (typeof frase === 'string') {
-    console.log('Frase e uma string');
+if (typeof frase === "string") {
+    console.log("Frase e uma string");
     frase.toLocaleLowerCase;
 }
 else {
-    console.log('Frase nao e uma string');
+    console.log("Frase nao e uma string");
 }
 const frase1 = new String("Front End");
 const frase2 = String("Front End");
@@ -60,18 +60,50 @@ console.log(typeof frase3);
 console.log(typeof frase3.toLowerCase());
 // Union Types 1
 let total2 = 200;
-total2 = '4000';
+total2 = "4000";
 function isNumber(value) {
-    if (typeof value === 'number') {
+    if (typeof value === "number") {
         return true;
     }
     else {
         return false;
     }
 }
-if (isNumber('200')) {
-    console.log('é um numero');
+if (isNumber("200")) {
+    console.log("é um numero");
 }
-console.log(isNumber('200'));
-const button = document.querySelector('button');
+console.log(isNumber("200"));
+const button = document.querySelector("button");
 button?.click();
+let total3 = 20;
+total3 = "30";
+function preencherDados(dados) {
+    document.body.innerHTML +=
+        `
+  <div>
+    <h2>${dados.nome}</h2>
+    <p>${dados.preco}</p>
+    <p>Inclui teclado:${dados.teclado ? 'sim' : 'nao'}</p>
+    </div>
+  `;
+}
+preencherDados({
+    nome: "Computador",
+    preco: 2000,
+    teclado: true,
+});
+preencherDados({
+    nome: "Notebook",
+    preco: 1500,
+    teclado: false,
+});
+const computador = {
+    nome: "Computador",
+    preco: 2000,
+    teclado: true,
+};
+function printarCategoria(categoria) {
+    console.log(categoria);
+}
+printarCategoria('codigo');
+// printarCategoria('teste');
