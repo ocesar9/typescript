@@ -58,3 +58,20 @@ console.log(typeof frase1);
 console.log(typeof frase2);
 console.log(typeof frase3);
 console.log(typeof frase3.toLowerCase());
+// Union Types 1
+let total2 = 200;
+total2 = '4000';
+function isNumber(value) {
+    if (typeof value === 'number') {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+if (isNumber('200')) {
+    console.log('é um numero');
+}
+console.log(isNumber('200'));
+const button = document.querySelector('button');
+button?.click();
