@@ -220,3 +220,38 @@ function mostrarCursos(cursos: Curso[]){
 const dados2: any = 'o any gera problemas';
 // mostrarCursos(dados2); // Error becouse should have Curso[] structure
 mostrarCursos([{nome: 'Julio', horas:300}])
+
+
+// Null e Undefined
+
+const button2 = document.querySelector('button');
+const config =  localStorage.getItem('config');
+
+if(button2 !== null) button2.click();
+if(button2) button2.click();
+button2?.click();
+
+let total4;
+
+function teste() {}
+
+console.log(typeof total);
+
+if(total4) console.log('Total foi definido')
+else console.log('Total não foi definido');
+
+
+interface Product {
+  nome?: string;
+}
+
+const jogo: Product = {
+  nome: 'Nintendo',
+}
+
+const livro: Product = {}
+
+console.log(jogo.nome);
+console.log(jogo?.nome?.toLowerCase());
+console.log(livro.nome);
+// console.log(livro.nome.toLowerCase()); Error because livro.nome is undefined
