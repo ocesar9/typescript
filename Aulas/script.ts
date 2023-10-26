@@ -177,3 +177,46 @@ const dados = [
   ["senhor dos aneis", 80],
   ["a guerra dos tronos", 120]
 ]
+
+// Any
+
+// Never use any
+function normalizarTexto(texto:any) {
+  return texto.trim().toLowerCase();
+}
+
+console.log(normalizarTexto("   senhor dos aneis redondos"))
+//console.log(normalizarTexto(200)) // Error Because should be a string value
+
+
+async function fetchJSON(url:string){
+  const response = await fetch(url);
+  const data = await response.json();
+  manipularData(data);
+}
+
+fetchJSON("../Exercicios/jsons/cursos.json")
+
+function manipularData(data: {nome:string}){
+  console.log(data.nome);
+}
+
+interface Curso {
+  nome:string;
+  horas:number;
+}
+
+function mostrarCursos(cursos: Curso[]){
+  cursos.forEach((curso) => {
+    document.body.innerHTML +=
+    `
+    <div>
+      <h2>${curso.nome}</h2>
+      <p>Horas: ${curso.horas}</p>
+    </div>
+    `
+  })
+}
+const dados2: any = 'o any gera problemas';
+// mostrarCursos(dados2); // Error becouse should have Curso[] structure
+mostrarCursos([{nome: 'Julio', horas:300}])
