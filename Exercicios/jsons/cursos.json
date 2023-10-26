@@ -1,0 +1,30 @@
+  [
+    {
+      "aulas": 200,
+      "gratuito": false,
+      "horas": 40,
+      "idAulas": [1,2,3,4,5,6,7,8,9],
+      "nivel": "avancado",
+      "nome": "HTML e CSS",
+      "tags": [
+        "HTML",
+        "CSS",
+        "Javascript",
+        "Browser"
+      ]
+    },
+    {
+      "aulas": 100,
+      "gratuito": true,
+      "horas": 20,
+      "idAulas": [10,11,12,13,14,15,16,17],
+      "nivel": "iniciante",
+      "nome": "CSS Flexbox",
+      "tags": [
+        "HTML",
+        "CSS"
+      ]
+    }  
+  ]
+  
+  

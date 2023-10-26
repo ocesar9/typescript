@@ -26,14 +26,13 @@ console.log(toNumber('200'));
 console.log(toNumber('Texto'));
 // Types e Interfaces
 async function fetchProduct() {
-    const response = await fetch('./notebook.json');
+    const response = await fetch('./jsons/notebook.json');
     const data = await response.json();
-    console.log(data);
     showProduct(data);
 }
 fetchProduct();
 function showProduct(data) {
-    document.body.innerHTML =
+    document.body.innerHTML +=
         `
     <div>
       <h2>${data.nome}</h2>
@@ -47,4 +46,25 @@ function showProduct(data) {
     </div>
     
   `;
+}
+// Arrays
+async function fetchCursos() {
+    const response = await fetch("./jsons/cursos.json");
+    const cursos = await response.json();
+    mostrarCursos(cursos);
+}
+fetchCursos();
+function mostrarCursos(cursos) {
+    cursos.forEach((curso) => {
+        document.body.innerHTML += `
+      <div>
+        <h2 style="color: ${curso.nivel === 'iniciante' ? 'yellow' : 'green'};">${curso.nome}</h2>
+        <p>Horas: ${curso.horas}</p>
+        <p>Aulas: ${curso.aulas}</p
+        <p>Tipo: ${curso.gratuito ? "Gratuito" : "Pago"}</p>
+        <p>Tags: ${curso.tags}</p>
+        <p>Tags: ${curso.idAulas.join(' | ')}</p>
+      </div>
+    `;
+    });
 }
