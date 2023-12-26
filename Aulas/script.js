@@ -175,3 +175,49 @@ console.log(jogo.nome);
 console.log(jogo?.nome?.toLowerCase());
 console.log(livro.nome);
 // console.log(livro.nome.toLowerCase()); Error because livro.nome is undefined
+// Instance of 
+class Produto {
+    nome;
+    preco;
+    constructor(nome, preco) {
+        this.nome = nome;
+        this.preco = preco;
+    }
+    precoReal() {
+        return `R$ ${this.preco}`;
+    }
+}
+const livro3 = new Produto('A Guerra dos Tronos', 200);
+console.log(livro3.precoReal());
+console.log(livro3 instanceof Produto);
+console.log(livro3 instanceof Array);
+class Livro {
+    autor;
+    constructor(autor) {
+        this.autor = autor;
+    }
+}
+class Jogo extends Produto {
+    jogadores;
+    constructor(nome, jogadores) {
+        super(nome, preco);
+        this.jogadores = jogadores;
+    }
+}
+function buscarProduto(busca) {
+    if (busca === 'O Hobbit')
+        return new Livro('J. R. R. Tolkien');
+    if (busca === 'Dark Souls')
+        return new Jogo('Dark Souls', 1);
+    return null;
+}
+const produto2 = buscarProduto('O Hobbit');
+const produto3 = buscarProduto('Dark Souls');
+if (produto2 instanceof Livro) {
+    console.log(produto2.autor);
+}
+if (produto3 instanceof Livro) {
+    console.log(produto3.autor);
+}
+if (produto3 instanceof Produto)
+    console.log(produto3.nome);

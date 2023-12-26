@@ -100,6 +100,9 @@ button?.click();
 
 // Types e Interfaces
 
+// Types are implemented when the variables defined contains more than one type;
+// Interfaces are implemented when the variables defined only contains one type;
+
 type NumberOrString = number | string; 
 
 let total3: NumberOrString = 20; 
@@ -255,3 +258,58 @@ console.log(jogo.nome);
 console.log(jogo?.nome?.toLowerCase());
 console.log(livro.nome);
 // console.log(livro.nome.toLowerCase()); Error because livro.nome is undefined
+
+// Instance of 
+
+class Produto {
+  nome: string;
+  preco?: number;
+  constructor(nome: string, preco: number) {
+    this.nome = nome;
+    this.preco = preco;
+  }
+
+  precoReal(){
+    return `R$ ${this.preco}`;
+  }
+}
+
+const livro3 = new Produto('A Guerra dos Tronos', 200);
+
+console.log(livro3.precoReal());
+console.log(livro3 instanceof Produto);
+console.log(livro3 instanceof Array);
+
+class Livro {
+  autor:string;
+  constructor(autor:string){
+    this.autor = autor;
+  }
+}
+
+class Jogo extends Produto {
+  jogadores:number;
+  constructor(nome:string,jogadores:number){
+    super(nome,preco);
+    this.jogadores = jogadores;
+  }
+}
+
+function buscarProduto(busca:string){
+  if(busca === 'O Hobbit') return new Livro('J. R. R. Tolkien');
+  if(busca === 'Dark Souls') return new Jogo('Dark Souls',1);
+  return null;
+}
+
+const produto2 = buscarProduto('O Hobbit');
+const produto3 = buscarProduto('Dark Souls');
+
+if(produto2 instanceof Livro){
+  console.log(produto2.autor);
+}
+
+if(produto3 instanceof Livro){
+  console.log(produto3.autor);
+}
+
+if(produto3 instanceof Produto) console.log(produto3.nome);
