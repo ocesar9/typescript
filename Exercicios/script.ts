@@ -110,3 +110,17 @@ function mostrarCursos(cursos:Array<Curso>){
 
 const link = document.getElementById('origamid');
 if(link instanceof HTMLAnchorElement) link.href = link.href.replace('http', 'https');
+
+// Interfaces do DOM
+
+const links = document.querySelectorAll('.link');
+function ativarElemento(elemento:HTMLElement){
+  elemento.style.color = 'red';
+  elemento.style.border = '2px solid red';
+}
+
+links.forEach((link) => {
+  if(link instanceof HTMLElement){
+    ativarElemento(link);
+  }
+});
