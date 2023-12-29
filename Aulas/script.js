@@ -213,6 +213,7 @@ function buscarProduto(busca) {
 }
 const produto2 = buscarProduto('O Hobbit');
 const produto3 = buscarProduto('Dark Souls');
+// The use of instance of verification able to use constructor methods
 if (produto2 instanceof Livro) {
     console.log(produto2.autor);
 }
@@ -238,3 +239,36 @@ links.forEach((link) => {
 const arrayLinks = Array.from(links);
 const anchorLinks = arrayLinks.filter((link) => link instanceof HTMLAnchorElement);
 console.log(anchorLinks);
+// Eventos e Callback
+// Every event have a type associated
+const button3 = document.querySelector('button');
+function handleClick(event) {
+    console.log(event);
+}
+button3?.addEventListener('pointerdown', handleClick);
+function handleScroll(event) {
+    console.log(event);
+}
+window.addEventListener('scroll', handleScroll);
+// function ativarMenu(event: TouchEvent | MouseEvent | KeyboardEvent){
+function ativarMenu(event) {
+    if (event instanceof MouseEvent) {
+        console.log(event.pageX);
+    }
+    if (event instanceof TouchEvent) {
+        console.log(event.touches[0].pageX);
+    }
+    console.log(event);
+}
+document.documentElement.addEventListener('mousedown', ativarMenu);
+document.documentElement.addEventListener('touchstart', ativarMenu);
+window.addEventListener('keydown', ativarMenu);
+const buttons4 = document.querySelector('button');
+function handleClick2(event) {
+    console.log(this);
+    const elemento = event.currentTarget;
+    if (elemento instanceof HTMLElement) {
+        console.log(elemento.innerText);
+    }
+}
+buttons4?.addEventListener('click', handleClick2);
