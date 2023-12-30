@@ -272,3 +272,64 @@ function handleClick2(event) {
     }
 }
 buttons4?.addEventListener('click', handleClick2);
+// Generics
+function retorno(a) {
+    return a;
+}
+// Essentially, this function takes the first variable and determines its data type for further processing.
+// function retorno<string>(a: string): string{
+//   return a;
+// }
+// function retorno<number>(a: number): number{
+//   return a;
+// }
+console.log(retorno("A Game").toLocaleLowerCase());
+console.log(retorno(200).toFixed());
+console.log(retorno(true).valueOf());
+const numeros4 = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+const frutas = ['banana', 'pera', 'laranja', 'maça', 'banana', 'uva', 'melão'];
+function firstFive(lista) {
+    return lista.slice(0, 5);
+}
+console.log(firstFive(numeros4));
+console.log(firstFive(frutas));
+function notNull(arg) {
+    if (arg !== null)
+        return arg;
+    else
+        return null;
+}
+console.log(notNull('Julio')?.toLocaleLowerCase());
+console.log(notNull(200)?.toFixed());
+function tipoDado(a) {
+    const resultado = {
+        ddo: a,
+        tipo: typeof a,
+    };
+    console.log(resultado);
+}
+tipoDado(true);
+tipoDado(200);
+// Tipo has all HTMLElements parameters
+function extractText(el) {
+    return {
+        texto: el.innerText,
+        el
+    };
+}
+const link4 = document.getElementById('origamid');
+if (link4) {
+    console.log(extractText(link4).el);
+}
+// Specifying the element selection type
+const link5 = document.querySelector('#origamid');
+console.log(link5?.href);
+async function getData(url) {
+    const response = await fetch(url);
+    return response.json();
+}
+async function handleData() {
+    const notebooks = await getData('https://api.origamid.dev/json/notebook.json');
+    console.log(notebooks);
+}
+handleData();
