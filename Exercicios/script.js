@@ -83,3 +83,13 @@ links.forEach((link) => {
         ativarElemento(link);
     }
 });
+function arredondar(valor) {
+    if (typeof valor === 'number') {
+        return Math.ceil(valor);
+    }
+    else {
+        return Math.ceil(Number(valor)).toString();
+    }
+}
+console.log(arredondar(200.5));
+console.log(arredondar('200.5'));
