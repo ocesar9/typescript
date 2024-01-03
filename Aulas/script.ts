@@ -564,3 +564,21 @@ function handleProduto(data: Produto2) {
 }
 
 fectchProduto();
+
+function typeGuard(value:unknown){
+  // With use of unknown is only possible to use the types parameters after verifying from the variable type
+  if(typeof value === 'string'){
+    return value.toLocaleUpperCase()
+  }
+  if(typeof value === 'number'){
+    return value.toFixed();
+  }
+  if(value instanceof HTMLElement){
+    return value.innerText;
+  }
+}
+
+
+console.log(typeGuard("Origamid"));
+console.log(typeGuard(200));
+console.log(typeGuard(document.body));
