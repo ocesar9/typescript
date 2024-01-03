@@ -466,3 +466,101 @@ async function handleData(){
 }
 
 handleData();
+
+// Functions
+
+function somar3(a: number, b: number, c?:number):number{
+  return a + b + (c ? c : 0);
+}
+
+console.log(somar3(3,4));
+
+const subtrair = (a: number, b: number) => a - b;
+
+console.log(subtrair(3, 4));
+
+type Callback = (event:MouseEvent) => void;
+
+function isString(value:any){
+  if(typeof value === 'string'){
+    return true;
+  }
+}
+
+console.log(isString('Teste'));
+console.log(isString(8));
+
+// function abortar(mensagem:string){
+//   throw new Error(mensagem);
+// }
+
+// abortar('Um erro ocorreu')
+// console.log('Tente novamente');
+
+interface Quadrado {
+  lado: number;
+  perimetro (lado: number):number
+}
+
+function calcular(form: Quadrado){
+  form.perimetro(3)
+}
+
+// Function Overload 
+// Structure the function in all values possibilities
+function normalizar(valor:string):string
+function normalizar(valor:string[]):string[]
+function normalizar(valor:string | string[]): string | string[]{
+  if(typeof valor === 'string'){
+    return valor.trim().toLowerCase();
+  } else  {
+    return valor.map(item => item.trim().toLowerCase());
+  }
+}
+
+console.log(normalizar(' PRoduto ').toLocaleUpperCase);
+console.log(normalizar(['BanaNa', '  UvA']).filter);
+
+function $(seletor: 'a') : HTMLAnchorElement | null;
+function $(seletor: 'video') : HTMLVideoElement | null;
+function $(seletor: string): Element | null {
+  return document.querySelector(seletor);
+}
+
+console.log($('a'));
+console.log($('video'));
+
+// Type Guard e Control Flow
+
+const obj = {
+  nome: 'Origamid',
+};
+
+if("preco" in obj) {
+  console.log("Sim");
+}
+
+async function fectchProduto(){
+  const response = await fetch('https://api.origamid.dev/json/notebook.json');
+  const json = await response.json();
+  handleProduto(json);
+}
+
+interface Produto2 {
+  nome:string;
+  preco:number;
+}
+
+function handleProduto(data: Produto2) {
+  console.log(data);
+  // Typeguard to verify if in the object type has the proper
+  if('total' in data) {
+    document.body.innerHTML +=
+    `
+      <p>Nome: ${data.nome}</p>
+      <p>Preco: ${data.preco}</p>
+    `
+  }
+}
+
+fectchProduto();

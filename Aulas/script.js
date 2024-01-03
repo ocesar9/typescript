@@ -333,3 +333,59 @@ async function handleData() {
     console.log(notebooks);
 }
 handleData();
+// Functions
+function somar3(a, b, c) {
+    return a + b + (c ? c : 0);
+}
+console.log(somar3(3, 4));
+const subtrair = (a, b) => a - b;
+console.log(subtrair(3, 4));
+function isString(value) {
+    if (typeof value === 'string') {
+        return true;
+    }
+}
+console.log(isString('Teste'));
+console.log(isString(8));
+function calcular(form) {
+    form.perimetro(3);
+}
+function normalizar(valor) {
+    if (typeof valor === 'string') {
+        return valor.trim().toLowerCase();
+    }
+    else {
+        return valor.map(item => item.trim().toLowerCase());
+    }
+}
+console.log(normalizar(' PRoduto ').toLocaleUpperCase);
+console.log(normalizar(['BanaNa', '  UvA']).filter);
+function $(seletor) {
+    return document.querySelector(seletor);
+}
+console.log($('a'));
+console.log($('video'));
+// Type Guard e Control Flow
+const obj = {
+    nome: 'Origamid',
+};
+if ("preco" in obj) {
+    console.log("Sim");
+}
+async function fectchProduto() {
+    const response = await fetch('https://api.origamid.dev/json/notebook.json');
+    const json = await response.json();
+    handleProduto(json);
+}
+function handleProduto(data) {
+    console.log(data);
+    // Typeguard to verify if in the object type has the proper
+    if ('total' in data) {
+        document.body.innerHTML +=
+            `
+      <p>Nome: ${data.nome}</p>
+      <p>Preco: ${data.preco}</p>
+    `;
+    }
+}
+fectchProduto();
