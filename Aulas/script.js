@@ -404,3 +404,49 @@ function typeGuard(value) {
 console.log(typeGuard("Origamid"));
 console.log(typeGuard(200));
 console.log(typeGuard(document.body));
+// User TYpe Guard
+async function fectCursos() {
+    const response = await fetch('https://api.origamid.dev/json/cursos.json');
+    const json = await response.json();
+    handleCursos(json);
+}
+fectCursos();
+function handleCursos(data) {
+    if (data instanceof Array) {
+        console.log('É uma intância de Array');
+    }
+    if (Array.isArray(data)) {
+        console.log('É array');
+    }
+}
+// TypeGuard and TypePredicate
+// The function indicates the return is true if is a string
+function isString2(value) {
+    return typeof value === 'string';
+}
+function handleData2(data) {
+    if (isString2(data)) {
+        data.toLocaleLowerCase;
+    }
+}
+async function fectchProduto2() {
+    const response = await fetch('https://api.origamid.dev/json/notebook.json');
+    const json = await response.json();
+    handleProduto3(json);
+}
+fectchProduto2();
+function isProduto3(value) {
+    // TypeGuard
+    // Verify that value is a object with nome property 
+    if (value && typeof value == 'object' && "nome" in value) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+function handleProduto3(data) {
+    if (isProduto3(data)) {
+        console.log(data.nome);
+    }
+}
