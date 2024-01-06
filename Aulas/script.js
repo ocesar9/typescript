@@ -453,7 +453,7 @@ function handleProduto3(data) {
 // Type Assertion
 // This use lose type safety if the element is not found
 const video2 = document.querySelector('#video');
-console.log(video2.volume);
+console.log(video2);
 async function fetchProduto3() {
     const response = await fetch('https://api.origamid.dev/json/notebook.json');
     // Type Assertion to indicate objects format
@@ -471,3 +471,36 @@ document.querySelector("a").href = "https://www.origamid.com";
 const video4 = document.querySelector(".player");
 const video5 = document.querySelector(".player");
 const video6 = document.querySelector(".player");
+// Desctructuring
+const { body } = document;
+function handleData3({ nome, preco }) {
+    nome.includes('book');
+    preco?.toFixed();
+}
+handleData3({
+    nome: "Notebook",
+    preco: 200
+});
+function handleClick3({ currentTarget, pageX }) {
+    if (currentTarget instanceof HTMLElement) {
+        currentTarget.innerHTML += `<h1>Mouse click em x: ${pageX}</h1>`;
+    }
+}
+document.documentElement.addEventListener('click', handleClick3);
+// ...rest
+function comparar(tipo, ...numeros) {
+    if (tipo === "menor") {
+        return Math.min(...numeros);
+    }
+    if (tipo === "maior") {
+        return Math.max(...numeros);
+    }
+}
+console.log("Menor " + comparar('menor', 3, 4, 5, 6));
+console.log("Maior " + comparar('maior', 3, 4, 5, 6));
+function handleProdutoCarro(dados) {
+    dados.preco;
+    dados.rodas;
+    dados.portas;
+}
+handleProdutoCarro({ rodas: 4, portas: 2, preco: 30000 });

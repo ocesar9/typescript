@@ -647,7 +647,7 @@ function handleProduto3(data: unknown){
 
 // This use lose type safety if the element is not found
 const video2 = document.querySelector('#video') as HTMLVideoElement;
-console.log(video2.volume)
+console.log(video2)
 
 interface Produto4{
   nome:string;
@@ -676,4 +676,72 @@ const video4 = document.querySelector(".player") as HTMLVideoElement;
 const video5 = <HTMLVideoElement>document.querySelector(".player");
 const video6 = document.querySelector<HTMLVideoElement>(".player");
 
+// Desctructuring
+
+const {body}: {body:HTMLElement} = document;
+
+
+interface Produto5{nome:string;preco?:number}
+
+function handleData3({nome,preco}: Produto5){
+  nome.includes('book');
+  preco?.toFixed()
+
+}
+
+handleData3({
+  nome: "Notebook",
+  preco: 200
+});
+
+function handleClick3({currentTarget,pageX}:MouseEvent){
+  if(currentTarget instanceof HTMLElement){
+    currentTarget.innerHTML += `<h1>Mouse click em x: ${pageX}</h1>`;
+  }
+}
+
+document.documentElement.addEventListener('click', handleClick3)
+
+// ...rest
+
+function comparar(tipo:string, ...numeros: number[]){
+ if(tipo === "menor"){
+  return Math.min(...numeros);
+ }
+ if(tipo === "maior"){
+  return Math.max(...numeros);
+ } 
+}
+
+console.log("Menor " + comparar('menor', 3,4,5,6));
+console.log("Maior " + comparar('maior', 3,4,5,6));
+
+// Intersection
+
+type Produto6 = {
+  preco:number;
+}
+
+type Carro = {
+  rodas:number;
+  portas:number;
+}
+
+function handleProdutoCarro(dados: Produto6 & Carro){
+  dados.preco
+  dados.rodas
+  dados.portas
+}
+
+handleProdutoCarro({rodas:4,portas:2, preco:30000})
+
+type TipoCarro = {
+  rodas:number;
+  portas:number
+}
+
+// Using Type we can create a new type by another type and add new properties
+type TipoCarroComPreco = TipoCarro & {
+  preco:number;
+}
 
