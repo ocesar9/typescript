@@ -642,3 +642,38 @@ function handleProduto3(data: unknown){
     console.log(data.nome);
   }
 }
+
+// Type Assertion
+
+// This use lose type safety if the element is not found
+const video2 = document.querySelector('#video') as HTMLVideoElement;
+console.log(video2.volume)
+
+interface Produto4{
+  nome:string;
+  preco:number;
+}
+
+async function fetchProduto3(){
+  const response = await fetch('https://api.origamid.dev/json/notebook.json');
+  // Type Assertion to indicate objects format
+  return response.json() as Promise<Produto4>;
+}
+fetchProduto3();
+
+async function handleProduto4(){
+  const produto = await fetchProduto3();
+  console.log(produto.nome)
+}
+
+// !non-null
+const video3 = document.querySelector('video')!;
+video3.volume;
+
+document.querySelector("a")!.href = "https://www.origamid.com";
+
+const video4 = document.querySelector(".player") as HTMLVideoElement;
+const video5 = <HTMLVideoElement>document.querySelector(".player");
+const video6 = document.querySelector<HTMLVideoElement>(".player");
+
+

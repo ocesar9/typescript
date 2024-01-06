@@ -450,3 +450,24 @@ function handleProduto3(data) {
         console.log(data.nome);
     }
 }
+// Type Assertion
+// This use lose type safety if the element is not found
+const video2 = document.querySelector('#video');
+console.log(video2.volume);
+async function fetchProduto3() {
+    const response = await fetch('https://api.origamid.dev/json/notebook.json');
+    // Type Assertion to indicate objects format
+    return response.json();
+}
+fetchProduto3();
+async function handleProduto4() {
+    const produto = await fetchProduto3();
+    console.log(produto.nome);
+}
+// !non-null
+const video3 = document.querySelector('video');
+video3.volume;
+document.querySelector("a").href = "https://www.origamid.com";
+const video4 = document.querySelector(".player");
+const video5 = document.querySelector(".player");
+const video6 = document.querySelector(".player");
