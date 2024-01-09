@@ -184,3 +184,6 @@ function handleCursos(data: unknown){
     })
   }
 }
+
+// Exercicio
+

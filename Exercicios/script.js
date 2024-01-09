@@ -123,3 +123,4 @@ function handleCursos(data) {
         });
     }
 }
+// Exercicio
