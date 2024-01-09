@@ -745,3 +745,35 @@ type TipoCarroComPreco = TipoCarro & {
   preco:number;
 }
 
+// Classes
+
+console.log(document.constructor)
+
+class Produto7 {
+  readonly tipo = "produto";
+  nome:string;
+  // Can be a extandable property
+  protected preco:number;
+  constructor(nome:string,preco: number) {
+    this.nome = nome;
+    this.preco = preco;
+  }
+  getPreco(){
+    return this.preco;
+  }
+
+  // Method only can be acessed by the class
+  static transformarPreco(preco:number){
+    return `R$ ${preco}`;
+  }
+}
+
+const livro2 = new Produto7("O Senhor dos Anéis",300);
+console.log(livro2.nome)
+// Cannot be redeclared because is a property only to be readen 
+// console.log(livro2.tipo = 'peixe')
+
+// Cannot be acessed because is a private property
+// console.log(livro2.preco);
+console.log(livro2.getPreco());
+console.log(Produto7.transformarPreco(livro2.getPreco()));
