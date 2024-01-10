@@ -187,3 +187,43 @@ function handleCursos(data: unknown){
 
 // Exercicio
 
+async function fetchVendas(){
+  const response = await fetch('https://api.origamid.dev/json/vendas.json');
+  const data = await response.json();
+  somarVendas(data);
+}
+
+fetchVendas();
+
+interface ProdutoDetalhes{
+  marca:string;
+  cor:string;
+}
+
+// 
+type Venda = [string,number,string, ProdutoDetalhes];
+
+function somarVendas(vendas: Venda[]){
+  let total3 = 0;
+  for(let i = 0; i < vendas.length; i++) {
+    total3 += vendas[i][1];
+  }
+  document.body.innerHTML += `<h1>Total: ${total3}</h1>`;
+  console.log(total3);
+  
+  // Create a tuple of the last value and the current from object Venda
+  const total4 = vendas.reduce((anterior, venda) => {
+    return anterior +venda[1];
+  },0);
+  console.log(total4)
+
+  document.body.innerHTML += `<h1>Total: ${total4}</h1>`;
+}
+
+const arr = [3,5,10,20,30];
+// For each number is a new loop that will be executed and sum the current number with the last
+const somar = arr.reduce((anterior, atual) => {
+  console.log(anterior,atual);
+  return anterior+atual;
+}, 0);
+

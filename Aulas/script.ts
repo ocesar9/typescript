@@ -777,3 +777,27 @@ console.log(livro2.nome)
 // console.log(livro2.preco);
 console.log(livro2.getPreco());
 console.log(Produto7.transformarPreco(livro2.getPreco()));
+
+// Tuples
+
+const produto8 = ['Notebook', 2500]
+const produto9: [string, number] = ['Notebook', 2500];
+
+console.log(produto9[0].toLowerCase());
+
+const nome3 = produto9[0];
+const [nome4, preco4] = produto9;
+
+function getText(selector:string): null | [HTMLElement,string] {
+  const el = document.querySelector<HTMLElement>(selector);
+  if(el){
+    // Create a Tuple if HTMLElement and string
+    return [el, el.innerText] as const
+  }else{
+    return null;
+  }
+}
+
+const button4 = getText("button");
+
+console.log(button4);
