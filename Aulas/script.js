@@ -531,7 +531,6 @@ console.log(livro2.nome);
 // console.log(livro2.preco);
 console.log(livro2.getPreco());
 console.log(Produto7.transformarPreco(livro2.getPreco()));
-
 // Tuples
 const produto8 = ['Notebook', 2500];
 const produto9 = ['Notebook', 2500];
@@ -550,5 +549,45 @@ function getText(selector) {
 }
 const button4 = getText("button");
 console.log(button4);
-
-// Keyof
+// The Produto keys can be passed to a variable
+let chave;
+// let chave: "nome" | "preco" | "novo";
+chave = "novo";
+// chave= "teste";
+function coordenadas(x, y) {
+    return { x, y };
+}
+let chave3;
+// The select need to be a key of Elementos
+// Using the Genetics to confirm the use of the Elementos keys
+function selecionar(seletor) {
+    return document.querySelector(seletor);
+}
+selecionar("a");
+// checkinterface
+async function fetchData(url) {
+    const base = 'https://api.origamid.dev/json';
+    const response = await fetch(base + url);
+    return await response.json();
+}
+// Utilitaries function to check interface
+// Create a relationship between the key and the interface object keys
+function checkInterface(obj, key) {
+    if (obj && typeof obj == 'object' && key in obj) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+async function handleData4() {
+    const jogo = await fetchData('/jogo.json');
+    if (checkInterface(jogo, "desenvolvedora")) {
+        console.log(jogo.desenvolvedora);
+    }
+    const livro = await fetchData('/livro.json');
+    if (checkInterface(livro, "autor")) {
+        console.log(livro.autor);
+    }
+}
+handleData4();

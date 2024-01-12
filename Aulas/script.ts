@@ -801,3 +801,84 @@ function getText(selector:string): null | [HTMLElement,string] {
 const button4 = getText("button");
 
 console.log(button4);
+
+
+// Keyof
+interface Produto10 {
+  nome:string;
+  preco: number;
+  novo: boolean;
+}
+
+// The Produto keys can be passed to a variable
+let chave: keyof Produto10;
+// let chave: "nome" | "preco" | "novo";
+chave="novo";
+// chave= "teste";
+
+function coordenadas(x:number,y:number){
+  return{x,y};
+}
+
+interface Elementos {
+  a: HTMLElement;
+  video: HTMLVideoElement;
+  div: HTMLBodyElement;
+  audio: HTMLAudioElement;
+}
+
+let chave3: keyof Elementos;
+
+
+// The select need to be a key of Elementos
+// Using the Genetics to confirm the use of the Elementos keys
+function selecionar<Chave extends keyof Elementos>(seletor: Chave) {
+  return document.querySelector(seletor) as Elementos[Chave] | null;
+}
+
+selecionar("a");
+
+// checkinterface
+
+async function fetchData<T>(url:string): Promise<T> {
+  const base = 'https://api.origamid.dev/json';
+  const response = await fetch(base + url);
+  return await response.json();
+}
+
+interface Jogo4 {
+  nome:string;
+  ano:number;
+  desenvolvedora:string;
+  plataformas:string[];
+}
+
+interface Livro4 {
+  nome:string;
+  ano:number;
+  autor:string;
+  paginas:number;
+}
+
+// Utilitaries function to check interface
+// Create a relationship between the key and the interface object keys
+function checkInterface<Interface>(obj:unknown, key: keyof Interface): obj is Interface {
+  if(obj && typeof obj == 'object' &&  key in obj){
+    return true;
+  } else {
+    return false;
+  }
+}
+
+async function handleData4(){
+  const jogo = await fetchData('/jogo.json');
+  if(checkInterface<Jogo4>(jogo, "desenvolvedora")){
+    console.log(jogo.desenvolvedora);
+  }
+  const livro = await fetchData('/livro.json');
+  if(checkInterface<Livro4>(livro, "autor")){
+    console.log(livro.autor);
+  }
+}
+
+handleData4();
