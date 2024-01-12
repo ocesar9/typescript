@@ -882,3 +882,97 @@ async function handleData4(){
 }
 
 handleData4();
+
+// Objetos
+
+// Duck Typing
+
+interface Produto11 {
+  nome: string;
+  quantidade: number;
+
+}
+
+const produto4 = {
+  nome: "Notebook",
+  quantidade: 10
+}
+
+const produto5 = {
+  nome: "Geladeira",
+  quantidade: 40,
+  freezer: true
+}
+
+const servico1 = {
+  nome: "Instalação",
+}
+
+function mostrarQuantidade(produto: Produto11){
+  console.log(produto.quantidade +20);
+}
+
+mostrarQuantidade(produto4);
+mostrarQuantidade(produto5);
+// mostrarQuantidade(servico1);
+
+// Partial
+//  Using Partial all the interface properties are optional
+function mostrarQuantidadePartial(produto: Partial<Produto11>){
+  if(produto.quantidade){
+    console.log(produto.quantidade +20);
+  }
+}
+
+mostrarQuantidadePartial(produto4);
+mostrarQuantidadePartial(produto5);
+mostrarQuantidadePartial(servico1);
+
+interface Post {
+  titulo:string;
+  visualizacoes: number;
+  tags: string[];
+  // This able to add additionals properties by extending the interface
+  [key:string]:unknown;
+}
+
+const artigo:Post = {
+  titulo:"Como aprender HTML",
+  visualizacoes: 3000,
+  tags: ["HTML",  "Frontend"],
+  autor: 'Julio'
+
+}
+
+console.log(artigo.autor)
+
+// Record
+
+interface ObjetoLiteral {
+  // This able use any type of property passing a key and a value;
+  [key:string]:unknown;
+}
+
+// This able use any type of property passing a key and a value;
+type ObjetoLiteral2 = Record<string,unknown>
+
+function mostrartitulo1(obj: ObjetoLiteral){
+  if('titulo' in obj){
+    console.log(obj.titulo)
+  }
+}
+
+mostrartitulo1({
+  titulo: "HTML e CSS 1"
+})
+
+function mostrartitulo2(obj: ObjetoLiteral2){
+  if('titulo' in obj){
+    console.log(obj.titulo)
+  }
+}
+
+mostrartitulo2({
+  titulo: "HTML e CSS 2"
+})
+

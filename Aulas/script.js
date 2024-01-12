@@ -591,3 +591,54 @@ async function handleData4() {
     }
 }
 handleData4();
+const produto4 = {
+    nome: "Notebook",
+    quantidade: 10
+};
+const produto5 = {
+    nome: "Geladeira",
+    quantidade: 40,
+    freezer: true
+};
+const servico1 = {
+    nome: "Instalação",
+};
+function mostrarQuantidade(produto) {
+    console.log(produto.quantidade + 20);
+}
+mostrarQuantidade(produto4);
+mostrarQuantidade(produto5);
+// mostrarQuantidade(servico1);
+// Partial
+//  Using Partial all the interface properties are optional
+function mostrarQuantidadePartial(produto) {
+    if (produto.quantidade) {
+        console.log(produto.quantidade + 20);
+    }
+}
+mostrarQuantidadePartial(produto4);
+mostrarQuantidadePartial(produto5);
+mostrarQuantidadePartial(servico1);
+const artigo = {
+    titulo: "Como aprender HTML",
+    visualizacoes: 3000,
+    tags: ["HTML", "Frontend"],
+    autor: 'Julio'
+};
+console.log(artigo.autor);
+function mostrartitulo1(obj) {
+    if ('titulo' in obj) {
+        console.log(obj.titulo);
+    }
+}
+mostrartitulo1({
+    titulo: "HTML e CSS 1"
+});
+function mostrartitulo2(obj) {
+    if ('titulo' in obj) {
+        console.log(obj.titulo);
+    }
+}
+mostrartitulo2({
+    titulo: "HTML e CSS 2"
+});
