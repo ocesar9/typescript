@@ -1,12 +1,12 @@
 // Annotation e Inference 1
 
-const total = 100;
+const total1 = 100;
 
-function somar(a: number, b: number) {
+function somar1(a: number, b: number) {
   return a + b;
 }
 
-console.log(somar(5, 10));
+console.log(somar1(5, 10));
 
 let produto: string = "Livro";
 let preco: number = 200;
@@ -184,11 +184,11 @@ const dados = [
 // Any
 
 // Never use any
-function normalizarTexto(texto:any) {
+function normalizarTexto1(texto:any) {
   return texto.trim().toLowerCase();
 }
 
-console.log(normalizarTexto("   senhor dos aneis redondos"))
+console.log(normalizarTexto1("   senhor dos aneis redondos"))
 //console.log(normalizarTexto(200)) // Error Because should be a string value
 
 
@@ -204,12 +204,12 @@ function manipularData(data: {nome:string}){
   console.log(data.nome);
 }
 
-interface Curso {
+interface Curso1 {
   nome:string;
   horas:number;
 }
 
-function mostrarCursos(cursos: Curso[]){
+function mostrarCursos1(cursos: Curso1[]){
   cursos.forEach((curso) => {
     document.body.innerHTML +=
     `
@@ -222,7 +222,7 @@ function mostrarCursos(cursos: Curso[]){
 }
 const dados2: any = 'o any gera problemas';
 // mostrarCursos(dados2); // Error becouse should have Curso[] structure
-mostrarCursos([{nome: 'Julio', horas:300}])
+mostrarCursos1([{nome: 'Julio', horas:300}])
 
 
 // Null e Undefined
@@ -244,15 +244,15 @@ if(total4) console.log('Total foi definido')
 else console.log('Total não foi definido');
 
 
-interface Product {
+interface Product1 {
   nome?: string;
 }
 
-const jogo: Product = {
+const jogo: Product1 = {
   nome: 'Nintendo',
 }
 
-const livro: Product = {}
+const livro: Product1 = {}
 
 console.log(jogo.nome);
 console.log(jogo?.nome?.toLowerCase());
@@ -322,9 +322,9 @@ const video = document.querySelector('#videoprincipal');
 
 if(video instanceof HTMLVideoElement) console.log(video.src);
 
-const links = document.querySelectorAll('.link');
+const links1 = document.querySelectorAll('.link');
 
-console.log(links instanceof NodeList);
+console.log(links1 instanceof NodeList);
 links.forEach((link) => {
   if(link instanceof HTMLAnchorElement){
     console.log(link.href);
@@ -333,7 +333,7 @@ links.forEach((link) => {
   }
 })
 
-const arrayLinks = Array.from(links);
+const arrayLinks = Array.from(links1);
 const anchorLinks = arrayLinks.filter((link) => link instanceof HTMLAnchorElement);
 console.log(anchorLinks);
 
@@ -585,15 +585,15 @@ console.log(typeGuard(document.body));
 
 // User TYpe Guard
 
-async function fectCursos(){
+async function fectCursos1(){
   const response = await fetch('https://api.origamid.dev/json/cursos.json');
   const json = await response.json();
-  handleCursos(json);
+  handleCursos1(json);
 }
 
-fectCursos();
+fectCursos1();
 
-function handleCursos(data: unknown){
+function handleCursos1(data: unknown){
   if(data instanceof Array){
     console.log('É uma intância de Array');
 

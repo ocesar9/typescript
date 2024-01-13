@@ -1,26 +1,15 @@
 "use strict";
-// Annotation e Inference 1
-const total1 = 100;
-function somar1(a, b) {
+const total = 100;
+function somar(a, b) {
     return a + b;
 }
-console.log(somar1(5, 10));
+console.log(somar(5, 10));
 let produto = "Livro";
 let preco = 200;
-// produto = 300;
-// preco = 300;
-// const carro: {
-//   marca: string;
-//   portas: number;
-// } = {
-//   marca: "Audi",
-//   portas: 5,
-// };
 const carro = {
     marca: "Audi",
     portas: 5,
 };
-// carro.marca = 3;
 const barato = preco < 400 ? true : "produto caro";
 console.log(barato);
 function somar2(a, b) {
@@ -36,7 +25,6 @@ function trasnformarPreco(produto) {
     return produto;
 }
 console.log(trasnformarPreco(nitendo));
-// String, Number e Boolean
 const frase = "Front end";
 const preco2 = 500;
 const condi = preco > 100;
@@ -58,7 +46,6 @@ console.log(typeof frase1);
 console.log(typeof frase2);
 console.log(typeof frase3);
 console.log(typeof frase3.toLowerCase());
-// Union Types 1
 let total2 = 200;
 total2 = "4000";
 function isNumber(value) {
@@ -106,8 +93,6 @@ function printarCategoria(categoria) {
     console.log(categoria);
 }
 printarCategoria('codigo');
-// printarCategoria('teste');
-// Arrays
 const numeros = [10, 20, 30, 1, 2, 3];
 const valores = [10, 'Taxas', 30, '40', 50, 3];
 function maiorQue10(data) {
@@ -122,13 +107,10 @@ const dados = [
     ["senhor dos aneis", 80],
     ["a guerra dos tronos", 120]
 ];
-// Any
-// Never use any
-function normalizarTexto1(texto) {
+function normalizarTexto(texto) {
     return texto.trim().toLowerCase();
 }
-console.log(normalizarTexto1("   senhor dos aneis redondos"));
-//console.log(normalizarTexto(200)) // Error Because should be a string value
+console.log(normalizarTexto("   senhor dos aneis redondos"));
 async function fetchJSON(url) {
     const response = await fetch(url);
     const data = await response.json();
@@ -138,7 +120,7 @@ fetchJSON("../Exercicios/jsons/cursos.json");
 function manipularData(data) {
     console.log(data.nome);
 }
-function mostrarCursos1(cursos) {
+function mostrarCursos(cursos) {
     cursos.forEach((curso) => {
         document.body.innerHTML +=
             `
@@ -150,9 +132,7 @@ function mostrarCursos1(cursos) {
     });
 }
 const dados2 = 'o any gera problemas';
-// mostrarCursos(dados2); // Error becouse should have Curso[] structure
-mostrarCursos1([{ nome: 'Julio', horas: 300 }]);
-// Null e Undefined
+mostrarCursos([{ nome: 'Julio', horas: 300 }]);
 const button2 = document.querySelector('button');
 const config = localStorage.getItem('config');
 if (button2 !== null)
@@ -174,8 +154,6 @@ const livro = {};
 console.log(jogo.nome);
 console.log(jogo?.nome?.toLowerCase());
 console.log(livro.nome);
-// console.log(livro.nome.toLowerCase()); Error because livro.nome is undefined
-// Instance of 
 class Produto {
     nome;
     preco;
@@ -213,7 +191,6 @@ function buscarProduto(busca) {
 }
 const produto2 = buscarProduto('O Hobbit');
 const produto3 = buscarProduto('Dark Souls');
-// The use of instance of verification able to use constructor methods
 if (produto2 instanceof Livro) {
     console.log(produto2.autor);
 }
@@ -222,12 +199,11 @@ if (produto3 instanceof Livro) {
 }
 if (produto3 instanceof Produto)
     console.log(produto3.nome);
-// Interfaces do DOM
 const video = document.querySelector('#videoprincipal');
 if (video instanceof HTMLVideoElement)
     console.log(video.src);
-const links1 = document.querySelectorAll('.link');
-console.log(links1 instanceof NodeList);
+const links = document.querySelectorAll('.link');
+console.log(links instanceof NodeList);
 links.forEach((link) => {
     if (link instanceof HTMLAnchorElement) {
         console.log(link.href);
@@ -236,11 +212,9 @@ links.forEach((link) => {
         console.log(typeof link);
     }
 });
-const arrayLinks = Array.from(links1);
+const arrayLinks = Array.from(links);
 const anchorLinks = arrayLinks.filter((link) => link instanceof HTMLAnchorElement);
 console.log(anchorLinks);
-// Eventos e Callback
-// Every event have a type associated
 const button3 = document.querySelector('button');
 function handleClick(event) {
     console.log(event);
@@ -250,7 +224,6 @@ function handleScroll(event) {
     console.log(event);
 }
 window.addEventListener('scroll', handleScroll);
-// function ativarMenu(event: TouchEvent | MouseEvent | KeyboardEvent){
 function ativarMenu(event) {
     if (event instanceof MouseEvent) {
         console.log(event.pageX);
@@ -272,17 +245,9 @@ function handleClick2(event) {
     }
 }
 buttons4?.addEventListener('click', handleClick2);
-// Generics
 function retorno(a) {
     return a;
 }
-// Essentially, this function takes the first variable and determines its data type for further processing.
-// function retorno<string>(a: string): string{
-//   return a;
-// }
-// function retorno<number>(a: number): number{
-//   return a;
-// }
 console.log(retorno("A Game").toLocaleLowerCase());
 console.log(retorno(200).toFixed());
 console.log(retorno(true).valueOf());
@@ -310,7 +275,6 @@ function tipoDado(a) {
 }
 tipoDado(true);
 tipoDado(200);
-// Tipo has all HTMLElements parameters
 function extractText(el) {
     return {
         texto: el.innerText,
@@ -321,7 +285,6 @@ const link4 = document.getElementById('origamid');
 if (link4) {
     console.log(extractText(link4).el);
 }
-// Specifying the element selection type
 const link5 = document.querySelector('#origamid');
 console.log(link5?.href);
 async function getData(url) {
@@ -333,7 +296,6 @@ async function handleData() {
     console.log(notebooks);
 }
 handleData();
-// Functions
 function somar3(a, b, c) {
     return a + b + (c ? c : 0);
 }
@@ -365,7 +327,6 @@ function $(seletor) {
 }
 console.log($('a'));
 console.log($('video'));
-// Type Guard e Control Flow
 const obj = {
     nome: 'Origamid',
 };
@@ -379,7 +340,6 @@ async function fectchProduto() {
 }
 function handleProduto(data) {
     console.log(data);
-    // Typeguard to verify if in the object type has the proper
     if ('total' in data) {
         document.body.innerHTML +=
             `
@@ -390,7 +350,6 @@ function handleProduto(data) {
 }
 fectchProduto();
 function typeGuard(value) {
-    // With use of unknown is only possible to use the types parameters after verifying from the variable type
     if (typeof value === 'string') {
         return value.toLocaleUpperCase();
     }
@@ -404,14 +363,13 @@ function typeGuard(value) {
 console.log(typeGuard("Origamid"));
 console.log(typeGuard(200));
 console.log(typeGuard(document.body));
-// User TYpe Guard
-async function fectCursos1() {
+async function fectCursos() {
     const response = await fetch('https://api.origamid.dev/json/cursos.json');
     const json = await response.json();
-    handleCursos1(json);
+    handleCursos(json);
 }
-fectCursos1();
-function handleCursos1(data) {
+fectCursos();
+function handleCursos(data) {
     if (data instanceof Array) {
         console.log('É uma intância de Array');
     }
@@ -419,8 +377,6 @@ function handleCursos1(data) {
         console.log('É array');
     }
 }
-// TypeGuard and TypePredicate
-// The function indicates the return is true if is a string
 function isString2(value) {
     return typeof value === 'string';
 }
@@ -436,8 +392,6 @@ async function fectchProduto2() {
 }
 fectchProduto2();
 function isProduto3(value) {
-    // TypeGuard
-    // Verify that value is a object with nome property 
     if (value && typeof value == 'object' && "nome" in value) {
         return true;
     }
@@ -450,13 +404,10 @@ function handleProduto3(data) {
         console.log(data.nome);
     }
 }
-// Type Assertion
-// This use lose type safety if the element is not found
 const video2 = document.querySelector('#video');
 console.log(video2);
 async function fetchProduto3() {
     const response = await fetch('https://api.origamid.dev/json/notebook.json');
-    // Type Assertion to indicate objects format
     return response.json();
 }
 fetchProduto3();
@@ -464,14 +415,12 @@ async function handleProduto4() {
     const produto = await fetchProduto3();
     console.log(produto.nome);
 }
-// !non-null
 const video3 = document.querySelector('video');
 video3.volume;
 document.querySelector("a").href = "https://www.origamid.com";
 const video4 = document.querySelector(".player");
 const video5 = document.querySelector(".player");
 const video6 = document.querySelector(".player");
-// Desctructuring
 const { body } = document;
 function handleData3({ nome, preco }) {
     nome.includes('book');
@@ -487,7 +436,6 @@ function handleClick3({ currentTarget, pageX }) {
     }
 }
 document.documentElement.addEventListener('click', handleClick3);
-// ...rest
 function comparar(tipo, ...numeros) {
     if (tipo === "menor") {
         return Math.min(...numeros);
@@ -504,12 +452,10 @@ function handleProdutoCarro(dados) {
     dados.portas;
 }
 handleProdutoCarro({ rodas: 4, portas: 2, preco: 30000 });
-// Classes
 console.log(document.constructor);
 class Produto7 {
     tipo = "produto";
     nome;
-    // Can be a extandable property
     preco;
     constructor(nome, preco) {
         this.nome = nome;
@@ -518,20 +464,14 @@ class Produto7 {
     getPreco() {
         return this.preco;
     }
-    // Method only can be acessed by the class
     static transformarPreco(preco) {
         return `R$ ${preco}`;
     }
 }
 const livro2 = new Produto7("O Senhor dos Anéis", 300);
 console.log(livro2.nome);
-// Cannot be redeclared because is a property only to be readen 
-// console.log(livro2.tipo = 'peixe')
-// Cannot be acessed because is a private property
-// console.log(livro2.preco);
 console.log(livro2.getPreco());
 console.log(Produto7.transformarPreco(livro2.getPreco()));
-// Tuples
 const produto8 = ['Notebook', 2500];
 const produto9 = ['Notebook', 2500];
 console.log(produto9[0].toLowerCase());
@@ -540,7 +480,6 @@ const [nome4, preco4] = produto9;
 function getText(selector) {
     const el = document.querySelector(selector);
     if (el) {
-        // Create a Tuple if HTMLElement and string
         return [el, el.innerText];
     }
     else {
@@ -549,29 +488,21 @@ function getText(selector) {
 }
 const button4 = getText("button");
 console.log(button4);
-// The Produto keys can be passed to a variable
 let chave;
-// let chave: "nome" | "preco" | "novo";
 chave = "novo";
-// chave= "teste";
 function coordenadas(x, y) {
     return { x, y };
 }
 let chave3;
-// The select need to be a key of Elementos
-// Using the Genetics to confirm the use of the Elementos keys
 function selecionar(seletor) {
     return document.querySelector(seletor);
 }
 selecionar("a");
-// checkinterface
 async function fetchData(url) {
     const base = 'https://api.origamid.dev/json';
     const response = await fetch(base + url);
     return await response.json();
 }
-// Utilitaries function to check interface
-// Create a relationship between the key and the interface object keys
 function checkInterface(obj, key) {
     if (obj && typeof obj == 'object' && key in obj) {
         return true;
@@ -608,9 +539,6 @@ function mostrarQuantidade(produto) {
 }
 mostrarQuantidade(produto4);
 mostrarQuantidade(produto5);
-// mostrarQuantidade(servico1);
-// Partial
-//  Using Partial all the interface properties are optional
 function mostrarQuantidadePartial(produto) {
     if (produto.quantidade) {
         console.log(produto.quantidade + 20);
@@ -642,3 +570,4 @@ function mostrartitulo2(obj) {
 mostrartitulo2({
     titulo: "HTML e CSS 2"
 });
+//# sourceMappingURL=script.js.map
