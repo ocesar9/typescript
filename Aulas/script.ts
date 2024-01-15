@@ -325,7 +325,7 @@ if(video instanceof HTMLVideoElement) console.log(video.src);
 const links1 = document.querySelectorAll('.link');
 
 console.log(links1 instanceof NodeList);
-links.forEach((link) => {
+links1.forEach((link) => {
   if(link instanceof HTMLAnchorElement){
     console.log(link.href);
   }else{
@@ -975,4 +975,18 @@ function mostrartitulo2(obj: ObjetoLiteral2){
 mostrartitulo2({
   titulo: "HTML e CSS 2"
 })
+
+
+// Module
+
+import pluginSlide from "./puglinSlide.js";
+import { ProdutoGlobal } from "./global.js";
+
+pluginSlide("div")
+
+const livro7: ProdutoGlobal = {
+  nome: "Maus",
+  preco: 50
+}
+
 

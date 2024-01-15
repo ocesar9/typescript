@@ -1,4 +1,3 @@
-"use strict";
 // Annotation e Inference 1
 const total1 = 100;
 function somar1(a, b) {
@@ -228,7 +227,7 @@ if (video instanceof HTMLVideoElement)
     console.log(video.src);
 const links1 = document.querySelectorAll('.link');
 console.log(links1 instanceof NodeList);
-links.forEach((link) => {
+links1.forEach((link) => {
     if (link instanceof HTMLAnchorElement) {
         console.log(link.href);
     }
@@ -642,3 +641,17 @@ function mostrartitulo2(obj) {
 mostrartitulo2({
     titulo: "HTML e CSS 2"
 });
+
+// Module
+
+import pluginSlide from "./puglinSlide.js";
+pluginSlide("div");
+const livro7 = {
+    nome: "Maus",
+    preco: 50
+};
+
+
+
+
+
