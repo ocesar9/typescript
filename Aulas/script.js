@@ -641,17 +641,15 @@ function mostrartitulo2(obj) {
 mostrartitulo2({
     titulo: "HTML e CSS 2"
 });
-
 // Module
-
 import pluginSlide from "./puglinSlide.js";
 pluginSlide("div");
 const livro7 = {
     nome: "Maus",
     preco: 50
 };
-
-
-
-
-
+// Declaration Files 
+const livro10 = {
+    nome: "Darkweb",
+    preco: 10
+};

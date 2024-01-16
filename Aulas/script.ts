@@ -989,4 +989,18 @@ const livro7: ProdutoGlobal = {
   preco: 50
 }
 
+// Declaration Files 
+
+const livro10: ProdutoGlobal2 = {
+  nome: "Darkweb",
+  preco: 10
+}
+
+declare global {
+  interface Usuario {
+    nome: string;
+    id: number;
+  }
+}
+
 

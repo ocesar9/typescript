@@ -5,6 +5,8 @@
   "compilerOptions": {
     // Versão do JavaScript gerado
     "target": "ESNext",
+    // Habilita a declaração de váriaveis globais de forma automática
+    // "declaration": true,
     // Versão do type module
       // "module": "ESNext",
     // Vai usar bibliotecas do ESNext e do DOM
