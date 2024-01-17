@@ -7,8 +7,8 @@ export default function normalizarTransacao(transacao) {
         data: stringParaDate(transacao.Data),
         status: transacao.Status,
         email: transacao.Email,
-        moeda: moedaParaNumero(transacao["Valor (R$)"]),
-        valor: 0,
+        moeda: transacao["Valor (R$)"],
+        valor: moedaParaNumero(transacao["Valor (R$)"]),
         pagamento: transacao["Forma de Pagamento"],
         novo: Boolean(transacao["Cliente Novo"])
     };

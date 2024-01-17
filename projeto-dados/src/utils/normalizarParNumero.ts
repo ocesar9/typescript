@@ -3,6 +3,6 @@
  * */ 
 
 export default function moedaParaNumero(moeda:string):number | null{
-    const numero = Number(moeda.replaceAll(".", "").replace(",",  "."))
+    const numero = Number(moeda.replaceAll(".", " ").replace(",",  "."))
     return isFinite(numero) ? numero : null;
 }
