@@ -26,15 +26,20 @@ function preencherLista(lista: CountList, containerId: string): void{
 function preencherEstatisticas(transacoes: Transacao[]):void{
     const data = new Estatisticas(transacoes);
 
-    // const pagamentoElement = document.getElementById("pagamento");
-    // if(pagamentoElement){
-        //     console.log(Object.keys(data.pagamento));
+    const pagamentoElement = document.getElementById("pagamento");
+    if(pagamentoElement){
+            console.log(Object.keys(data.pagamento));
         //     Object.keys(data.pagamento).forEach(key => {
             //         pagamentoElement.innerHTML += `<p>${key}: ${data.pagamento[key]}</p>`;
             //     })
-    // }
+    }
     preencherLista(data.pagamento, 'pagamento')
     preencherLista(data.status, 'status')
+
+    const diaElement = document.querySelector<HTMLElement>("p#melhor-dia span");
+    if(diaElement){
+        diaElement.innerText = data.melhorDia[0];
+    }
 
     const totalElement = document.querySelector<HTMLElement>("p#total span");
     if(totalElement){

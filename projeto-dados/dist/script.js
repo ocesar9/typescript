@@ -20,8 +20,16 @@ function preencherLista(lista, containerId) {
 }
 function preencherEstatisticas(transacoes) {
     const data = new Estatisticas(transacoes);
+    const pagamentoElement = document.getElementById("pagamento");
+    if (pagamentoElement) {
+        console.log(Object.keys(data.pagamento));
+    }
     preencherLista(data.pagamento, 'pagamento');
     preencherLista(data.status, 'status');
+    const diaElement = document.querySelector("p#melhor-dia span");
+    if (diaElement) {
+        diaElement.innerText = data.melhorDia[0];
+    }
     const totalElement = document.querySelector("p#total span");
     if (totalElement) {
         totalElement.innerText = conveterReal(data.total);

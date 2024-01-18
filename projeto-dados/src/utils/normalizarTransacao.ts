@@ -1,4 +1,4 @@
-import moedaParaNumero from "./normalizarParNumero.js";
+import moedaParaNumero from "./normalizarParaNumero.js";
 import stringParaDate from "./stringParaDate.js";
 
 declare global {
