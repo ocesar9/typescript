@@ -1,33 +1,49 @@
 export default class Slide {
     container;
-    elements;
+    slides;
     controls;
     time;
     index;
-    element;
-    constructor(container, elements, controls, time = 5000) {
+    slideElement;
+    constructor(container, slides, controls, time = 5000) {
         this.container = container;
-        this.elements = elements;
+        this.slides = slides;
         this.controls = controls;
         this.time = time;
         this.index = 0;
-        this.element = this.elements[this.index];
-        console.log(this.container);
-        console.log(this.elements);
-        console.log(this.controls);
-        console.log(this.time);
-        this.show(0);
+        this.slideElement = this.slides[this.index];
+        this.init();
     }
-    hide(e) {
-        e.classList.remove('active');
+    hide(el) {
+        el.classList.remove("active");
     }
     show(index) {
         this.index = index;
-        this.element = this.elements[this.index];
-        this.elements.forEach(e => {
-            this.hide(e);
-        });
-        this.element.classList.add("active");
+        this.slideElement = this.slides[this.index];
+        this.slides.forEach((el) => this.hide(el));
+        this.slideElement.classList.add("active");
+    }
+    prev() {
+        const prev = this.index > 0 ? this.index - 1 : this.slides.length - 1;
+        this.show(prev);
+    }
+    next() {
+        const next = this.index + 1 < this.slides.length ? this.index + 1 : 0;
+        this.show(next);
+    }
+    addControls() {
+        const prevButton = document.createElement("button");
+        const nextButton = document.createElement("button");
+        prevButton.innerText = "Anterior";
+        nextButton.innerText = "Próximo";
+        this.controls.appendChild(prevButton);
+        this.controls.appendChild(nextButton);
+        prevButton.addEventListener("pointerup", () => this.prev());
+        nextButton.addEventListener("pointerup", () => this.next());
+    }
+    init() {
+        this.addControls();
+        this.show(this.index);
     }
 }
 //# sourceMappingURL=Slide.js.map
