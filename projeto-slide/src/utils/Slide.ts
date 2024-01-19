@@ -2,7 +2,7 @@ import Timeout from "./Timeout.js";
 
 export default class Slide {
   container: Element;
-  slides: Element[];
+  slidesContainer: Element[];
   controls: Element;
   time: number;
   index: number;
@@ -11,43 +11,62 @@ export default class Slide {
   paused: boolean;
   constructor(
     container: Element,
-    slides: Element[],
+    slidesContainer: Element[],
     controls: Element,
     time: number = 5000
   ) {
     this.container = container;
-    this.slides = slides;
+    this.slidesContainer = slidesContainer;
     this.controls = controls;
     this.time = time;
     this.timeout = null;
     this.paused = false;
-
-    this.index = 0;
-    this.slideElement = this.slides[this.index];
+    this.index = Number(localStorage.getItem('activeSlide')) ? Number(localStorage.getItem('activeSlide')) : 0;
+    this.slideElement = this.slidesContainer[this.index];
 
     this.init();
   }
   hide(el: Element) {
     el.classList.remove("active");
+    if(el instanceof HTMLVideoElement){
+      el.currentTime = 0;
+      el.pause();
+    }
   }
   show(index: number) {
     this.index = index;
-    this.slideElement = this.slides[this.index];
-    this.slides.forEach((el) => this.hide(el));
-    this.slideElement.classList.add("active");
+    this.slideElement = this.slidesContainer[this.index];
+    console.log(localStorage.getItem('activeSlide'));
+    localStorage.setItem("activeSlide", String(this.index));
 
+    this.slidesContainer.forEach((el) => this.hide(el));
+    this.slideElement.classList.add("active");
+    if(this.slideElement instanceof HTMLVideoElement){
+      this.autoVideo(this.slideElement)
+    } else {
+      this.auto(this.time)
+    }
     this.auto(this.time);
+  }
+  autoVideo(video: HTMLVideoElement){
+    video.muted = true;
+    video.play();
+    let firstPlay = true;
+    video.addEventListener('playing', () => {
+      if(firstPlay) this.auto(video.duration*1000);
+      firstPlay = false;
+    })
   }
   auto(time:number){
     this.timeout?.clear();
     this.timeout = new Timeout(() => this.next(),time);
   }
   prev() {
-    const prev = this.index > 0 ? this.index - 1 : this.slides.length - 1;
+    const prev = this.index > 0 ? this.index - 1 : this.slidesContainer.length - 1;
     this.show(prev);
   }
   next() {
-    const next = this.index + 1 < this.slides.length ? this.index + 1 : 0;
+    const next = this.index + 1 < this.slidesContainer.length ? this.index + 1 : 0;
     this.show(next);
   }
   pause(){
@@ -77,6 +96,5 @@ export default class Slide {
   private init() {
     this.addControls();
     this.show(this.index);
-    
   }
 }
