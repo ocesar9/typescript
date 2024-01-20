@@ -75,12 +75,14 @@ export default class Slide {
         this.show(next);
     }
     pause() {
+        document.body.classList.add('pause');
         console.log("paused");
         this.timeout?.pause();
         this.thumb?.classList.add("paused");
         this.paused = true;
     }
     continue() {
+        document.body.classList.remove('pause');
         console.log("continued");
         this.paused = false;
         this.thumb?.classList.remove("paused");
@@ -95,6 +97,8 @@ export default class Slide {
         this.controls.appendChild(nextButton);
         this.controls.addEventListener("mouseover", () => this.pause());
         this.controls.addEventListener("mouseleave", () => this.continue());
+        this.controls.addEventListener("touchstart", () => this.pause());
+        this.controls.addEventListener("touchend", () => this.continue());
         prevButton.addEventListener("pointerup", () => this.prev());
         nextButton.addEventListener("pointerup", () => this.next());
     }
